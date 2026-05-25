@@ -349,13 +349,12 @@ export default function Projects() {
                 </button>
               </div>
 
-              {/* Viewport-Adaptive Immersive Video Container */}
               <motion.div
                 initial={{ scale: 0.95, y: 15 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 15 }}
                 transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                className="relative w-full h-[65vh] md:h-[75vh] max-w-5xl rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/60 cursor-default"
+                className="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/60 cursor-default"
                 onClick={(e) => e.stopPropagation()} // prevent close on player click
               >
                 <video
