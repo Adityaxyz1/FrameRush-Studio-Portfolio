@@ -43,6 +43,13 @@ const videoProjects: VideoProject[] = [
     videoUrl: "/portfolio/Videos/Restraunts.mp4",
     year: "2025",
   },
+  {
+    id: "aura",
+    title: "Aura of Movement",
+    category: "Cinematic CGI • Brand Simulation",
+    videoUrl: "/portfolio/Videos/4.mp4",
+    year: "2026",
+  },
 ];
 
 const postProjects: PostProject[] = [
@@ -84,6 +91,7 @@ export default function Projects() {
     wedding: true,
     industrial: true,
     restaurants: true,
+    aura: true,
   });
 
   const toggleMute = (id: string) => {
