@@ -116,9 +116,15 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#0A0A0A] pt-20 pb-32 md:pt-32 md:pb-48 overflow-hidden"
+      className="relative w-full bg-[#0A0A0A] pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      {/* Subtle gold radial light leak at the bottom separation */}
+      <div 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55vw] h-[30vw] rounded-full pointer-events-none z-0"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.035) 0%, transparent 70%)" }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -283,6 +289,15 @@ export default function Projects() {
             </div>
           </div>
 
+        </div>
+
+        {/* Cinematic technical slate accent at the section bottom */}
+        <div className="w-full border-t border-white/[0.04] pt-8 mt-16 md:mt-24 flex flex-col sm:flex-row gap-4 items-center justify-between text-[8px] font-sans font-medium tracking-[0.3em] text-[#999999]/30 uppercase relative z-10">
+          <span>FRAME RUSH // SELECTED WORKS ARCHIVE END</span>
+          <span className="w-2 h-2 rounded-full border border-[#D4AF37]/30 flex items-center justify-center animate-pulse">
+            <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+          </span>
+          <span>RENDER OK // LATENCY 0.0MS // 60 FPS</span>
         </div>
 
         {/* Supporting Image Lightbox Overlay */}
