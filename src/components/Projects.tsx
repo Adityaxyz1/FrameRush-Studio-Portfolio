@@ -123,7 +123,7 @@ export default function Projects() {
         {/* Section Header */}
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] block mb-3">
+            <span className="text-[11px] md:text-[13px] font-sans font-medium uppercase tracking-[0.22em] text-[#D4AF37]/90 block mb-3">
               02 • Visual Portfolios
             </span>
             <h2 className="text-white leading-tight font-display">
@@ -134,19 +134,19 @@ export default function Projects() {
             Every piece is designed to capture attention and tell an elegant story, blending raw emotional cinematic shots with cutting-edge 3D motions.
           </p>
         </div>
-
+ 
         {/* Separated Two-Part Layout (Videos vs Posts) */}
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start w-full">
           
           {/* LEFT PART: Videos (16:9 aspect ratio, plays inline) */}
           <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="border-b border-white/[0.06] pb-4 mb-2">
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
-                01 // Motion Productions (Videos)
+              <span className="text-[11px] md:text-[13px] font-sans font-medium uppercase tracking-[0.22em] text-[#D4AF37]/90">
+                01 // MOTION PRODUCTIONS (VIDEOS)
               </span>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+ 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
               {videoProjects.map((project, idx) => (
                 <motion.div
                   key={project.id}
@@ -175,7 +175,7 @@ export default function Projects() {
                     <span className="absolute top-2 right-2 w-1.5 h-1.5 border-t border-r border-white/20 pointer-events-none" />
                     <span className="absolute bottom-2 left-2 w-1.5 h-1.5 border-b border-l border-white/20 pointer-events-none" />
                     <span className="absolute bottom-2 right-2 w-1.5 h-1.5 border-b border-r border-white/20 pointer-events-none" />
-
+ 
                     {/* Volume Control Overlay (Appears on hover) */}
                     <button
                       onClick={(e) => {
@@ -188,34 +188,37 @@ export default function Projects() {
                       {mutedVideos[project.id] ? <VolumeX size={10} /> : <Volume2 size={10} />}
                     </button>
                   </div>
-
+ 
                   {/* Meta details below */}
-                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mt-4 mb-1">
+                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mt-4 mb-1.5">
                     <span>0{idx + 1}</span>
                     <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
                     <span className="text-white/60">{project.year}</span>
                   </div>
-
-                  <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight mb-0.5 group-hover:text-[#D4AF37] transition-colors duration-300">
+ 
+                  <h3 
+                    style={{ fontSize: "clamp(13px, 1.2vw + 8px, 19px)" }}
+                    className="text-[#F2F2F2] font-display font-light uppercase tracking-[0.15em] mb-1 group-hover:text-[#D4AF37] transition-colors duration-300"
+                  >
                     {project.title}
                   </h3>
-                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase">
+                  <p className="text-[9px] md:text-[10px] font-sans tracking-[0.15em] text-[#999999] uppercase">
                     {project.category}
                   </p>
                 </motion.div>
               ))}
             </div>
           </div>
-
+ 
           {/* RIGHT PART: Posts (16:9 aspect ratio, opens lightbox) */}
           <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="border-b border-white/[0.06] pb-4 mb-2">
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
-                02 // Concept Art & Designs (Posts)
+              <span className="text-[11px] md:text-[13px] font-sans font-medium uppercase tracking-[0.22em] text-[#D4AF37]/90">
+                02 // CONCEPT ART & DESIGNS (POSTS)
               </span>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+ 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
               {postProjects.map((project, idx) => (
                 <motion.div
                   key={project.id}
@@ -245,22 +248,25 @@ export default function Projects() {
                     <span className="absolute top-2 right-2 w-1.5 h-1.5 border-t border-r border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
                     <span className="absolute bottom-2 left-2 w-1.5 h-1.5 border-b border-l border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
                     <span className="absolute bottom-2 right-2 w-1.5 h-1.5 border-b border-r border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
-
+ 
                     {/* Mobile-only Expand Badge */}
                     <div className="absolute bottom-2 right-2 md:hidden p-1.5 rounded-full bg-[#0A0A0A]/85 border border-white/10 text-[#D4AF37]">
                       <Eye size={10} />
                     </div>
                   </div>
-
+ 
                   {/* Meta details below */}
-                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mt-4 mb-1">
+                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mt-4 mb-1.5">
                     <span>0{idx + 1}</span>
                     <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
                     <span className="text-white/60">{project.year}</span>
                   </div>
-
-                  <div className="flex justify-between items-end gap-2 mb-0.5">
-                    <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300">
+ 
+                  <div className="flex justify-between items-end gap-2 mb-1">
+                    <h3 
+                      style={{ fontSize: "clamp(13px, 1.2vw + 8px, 19px)" }}
+                      className="text-[#F2F2F2] font-display font-light uppercase tracking-[0.15em] group-hover:text-[#D4AF37] transition-colors duration-300"
+                    >
                       {project.title}
                     </h3>
                     
@@ -269,7 +275,7 @@ export default function Projects() {
                     </div>
                   </div>
                   
-                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase">
+                  <p className="text-[9px] md:text-[10px] font-sans tracking-[0.15em] text-[#999999] uppercase">
                     {project.category}
                   </p>
                 </motion.div>
