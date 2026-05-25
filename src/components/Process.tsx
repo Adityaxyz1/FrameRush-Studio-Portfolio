@@ -64,9 +64,9 @@ export default function Process() {
         
         {/* Section Title */}
         <div className="mb-20 md:mb-28 text-left">
-          <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] mb-3">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] block mb-3">
             04 • Workflow Logic
-          </p>
+          </span>
           <h2 className="text-white leading-tight font-display mb-4">
             The Creative Process
           </h2>

@@ -103,9 +103,9 @@ export default function Projects() {
         {/* Section Header */}
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] mb-3">
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] block mb-3">
               02 • Visual Portfolios
-            </p>
+            </span>
             <h2 className="text-white leading-tight font-display">
               Selected Works
             </h2>

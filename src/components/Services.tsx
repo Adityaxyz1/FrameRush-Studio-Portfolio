@@ -124,9 +124,9 @@ export default function Services() {
         
         {/* Section Title */}
         <div className="mb-16 md:mb-24 text-left">
-          <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] mb-3">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] block mb-3">
             03 • Core Capabilities
-          </p>
+          </span>
           <h2 className="text-white leading-tight font-display mb-4">
             Studio Expertise
           </h2>

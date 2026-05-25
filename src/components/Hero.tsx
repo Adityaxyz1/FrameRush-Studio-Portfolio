@@ -218,7 +218,7 @@ export default function Hero() {
         <div className="mb-8 px-4 py-1.5 glass-panel rounded-full border border-white/[0.04] flex items-center gap-2 animate-reveal-up">
           <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
           <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
-            Premium Motion Agency
+            01 • Premium Motion Agency
           </span>
         </div>
 

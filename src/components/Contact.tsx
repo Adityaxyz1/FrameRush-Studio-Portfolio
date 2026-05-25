@@ -20,7 +20,7 @@ export default function Contact() {
           
           {/* Subtle Tag */}
           <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37] mb-6 block">
-            06 • Collaboration Hub
+            05 • Collaboration Hub
           </span>
 
           {/* High-Impact Headline */}
