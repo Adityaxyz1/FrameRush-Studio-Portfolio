@@ -127,134 +127,137 @@ export default function Projects() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start w-full">
           
           {/* LEFT PART: Videos (16:9 aspect ratio, plays inline) */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-16">
+          <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="border-b border-white/[0.06] pb-4 mb-2">
               <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
                 01 // Motion Productions (Videos)
               </span>
             </div>
 
-            {videoProjects.map((project, idx) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full flex flex-col"
-              >
-                {/* Meta details */}
-                <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mb-2">
-                  <span>0{idx + 1}</span>
-                  <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
-                  <span className="text-white/60">{project.year}</span>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+              {videoProjects.map((project, idx) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full flex flex-col"
+                >
+                  {/* Meta details */}
+                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mb-2">
+                    <span>0{idx + 1}</span>
+                    <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
+                    <span className="text-white/60">{project.year}</span>
+                  </div>
 
-                <h3 className="text-white text-xl md:text-2xl font-display font-light tracking-tight mb-1">
-                  {project.title}
-                </h3>
-                <p className="text-[10px] md:text-xs font-sans tracking-[0.08em] text-[#999999] uppercase mb-4">
-                  {project.category}
-                </p>
+                  <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight mb-1 truncate" title={project.title}>
+                    {project.title}
+                  </h3>
+                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase mb-3 truncate" title={project.category}>
+                    {project.category}
+                  </p>
 
-                {/* 16:9 Video Player Container (Shrinks responsively) */}
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/[0.04] bg-[#141414] shadow-lg group">
-                  <video
-                    src={project.videoUrl}
-                    className="w-full h-full object-cover"
-                    style={{ transform: "translateZ(0)", willChange: "transform" }}
-                    autoPlay
-                    loop
-                    muted={mutedVideos[project.id]}
-                    playsInline
-                  />
-                  
-                  {/* Subtle Plus Sign on corners */}
-                  <span className="absolute top-4 left-4 w-2.5 h-2.5 border-t border-l border-white/20 pointer-events-none" />
-                  <span className="absolute top-4 right-4 w-2.5 h-2.5 border-t border-r border-white/20 pointer-events-none" />
-                  <span className="absolute bottom-4 left-4 w-2.5 h-2.5 border-b border-l border-white/20 pointer-events-none" />
-                  <span className="absolute bottom-4 right-4 w-2.5 h-2.5 border-b border-r border-white/20 pointer-events-none" />
+                  {/* 16:9 Video Player Container (Shrinks responsively) */}
+                  <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/[0.04] bg-[#141414] shadow-lg group">
+                    <video
+                      src={project.videoUrl}
+                      className="w-full h-full object-cover"
+                      style={{ transform: "translateZ(0)", willChange: "transform" }}
+                      autoPlay
+                      loop
+                      muted={mutedVideos[project.id]}
+                      playsInline
+                    />
+                    
+                    {/* Subtle Plus Sign on corners */}
+                    <span className="absolute top-2 left-2 w-1.5 h-1.5 border-t border-l border-white/20 pointer-events-none" />
+                    <span className="absolute top-2 right-2 w-1.5 h-1.5 border-t border-r border-white/20 pointer-events-none" />
+                    <span className="absolute bottom-2 left-2 w-1.5 h-1.5 border-b border-l border-white/20 pointer-events-none" />
+                    <span className="absolute bottom-2 right-2 w-1.5 h-1.5 border-b border-r border-white/20 pointer-events-none" />
 
-                  {/* Volume Control Overlay (Appears on hover) */}
-                  <button
-                    onClick={() => toggleMute(project.id)}
-                    className="absolute bottom-4 right-4 p-2.5 rounded-full bg-black/75 border border-white/10 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
-                    title={mutedVideos[project.id] ? "Unmute" : "Mute"}
-                  >
-                    {mutedVideos[project.id] ? <VolumeX size={14} /> : <Volume2 size={14} />}
-                  </button>
-                </div>
-              </motion.div>
-            ))}
+                    {/* Volume Control Overlay (Appears on hover) */}
+                    <button
+                      onClick={() => toggleMute(project.id)}
+                      className="absolute bottom-2 right-2 p-1.5 rounded-full bg-black/75 border border-white/10 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
+                      title={mutedVideos[project.id] ? "Unmute" : "Mute"}
+                    >
+                      {mutedVideos[project.id] ? <VolumeX size={10} /> : <Volume2 size={10} />}
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* RIGHT PART: Posts (16:9 aspect ratio, opens lightbox) */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-16">
+          <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="border-b border-white/[0.06] pb-4 mb-2">
               <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
                 02 // Concept Art & Designs (Posts)
               </span>
             </div>
 
-            {postProjects.map((project, idx) => (
-              <motion.div
-                key={project.id}
-                onClick={() => setLightboxImage(project.imageUrl)}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full flex flex-col group cursor-none"
-                data-cursor="view"
-              >
-                {/* Meta details */}
-                <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mb-2">
-                  <span>0{idx + 1}</span>
-                  <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
-                  <span className="text-white/60">{project.year}</span>
-                </div>
-
-                <div className="flex justify-between items-end gap-4 mb-1">
-                  <h3 className="text-white text-xl md:text-2xl font-display font-light tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  
-                  <div className="hidden md:flex items-center gap-1.5 text-[#D4AF37] opacity-40 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-500">
-                    <span className="text-[10px] font-sans font-bold tracking-widest uppercase">Expand</span>
-                    <Eye size={13} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+              {postProjects.map((project, idx) => (
+                <motion.div
+                  key={project.id}
+                  onClick={() => setLightboxImage(project.imageUrl)}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full flex flex-col group cursor-none"
+                  data-cursor="view"
+                >
+                  {/* Meta details */}
+                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mb-2">
+                    <span>0{idx + 1}</span>
+                    <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
+                    <span className="text-white/60">{project.year}</span>
                   </div>
-                </div>
-                
-                <p className="text-[10px] md:text-xs font-sans tracking-[0.08em] text-[#999999] uppercase mb-4">
-                  {project.category}
-                </p>
 
-                {/* 16:9 Image Container (Click opens lightbox) */}
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/[0.04] bg-[#141414] shadow-lg cursor-zoom-in">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover scale-100 group-hover:scale-[1.03] transition-all duration-[1200ms] ease-out filter grayscale-[80%] brightness-[0.55] contrast-[1.05] group-hover:grayscale-0 group-hover:brightness-95 group-hover:contrast-100"
-                  />
-                  
-                  {/* Visual Glare Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
-                  
-                  {/* Subtle Plus Sign on corners */}
-                  <span className="absolute top-4 left-4 w-2.5 h-2.5 border-t border-l border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
-                  <span className="absolute top-4 right-4 w-2.5 h-2.5 border-t border-r border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
-                  <span className="absolute bottom-4 left-4 w-2.5 h-2.5 border-b border-l border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
-                  <span className="absolute bottom-4 right-4 w-2.5 h-2.5 border-b border-r border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
-
-                  {/* Mobile-only Expand Badge */}
-                  <div className="absolute bottom-4 right-4 md:hidden p-2 rounded-full bg-[#0A0A0A]/85 border border-white/10 text-[#D4AF37]">
-                    <Eye size={14} />
+                  <div className="flex justify-between items-end gap-2 mb-1">
+                    <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300 truncate" title={project.title}>
+                      {project.title}
+                    </h3>
+                    
+                    <div className="hidden md:flex items-center gap-1 text-[#D4AF37] opacity-40 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-500 flex-shrink-0">
+                      <Eye size={11} />
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                  
+                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase mb-3 truncate" title={project.category}>
+                    {project.category}
+                  </p>
+
+                  {/* 16:9 Image Container (Click opens lightbox) */}
+                  <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/[0.04] bg-[#141414] shadow-lg cursor-zoom-in">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-cover scale-100 group-hover:scale-[1.03] transition-all duration-[1200ms] ease-out filter grayscale-[80%] brightness-[0.55] contrast-[1.05] group-hover:grayscale-0 group-hover:brightness-95 group-hover:contrast-100"
+                    />
+                    
+                    {/* Visual Glare Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
+                    
+                    {/* Subtle Plus Sign on corners */}
+                    <span className="absolute top-2 left-2 w-1.5 h-1.5 border-t border-l border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
+                    <span className="absolute top-2 right-2 w-1.5 h-1.5 border-t border-r border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
+                    <span className="absolute bottom-2 left-2 w-1.5 h-1.5 border-b border-l border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
+                    <span className="absolute bottom-2 right-2 w-1.5 h-1.5 border-b border-r border-white/20 group-hover:border-[#D4AF37]/50 transition-colors duration-500 pointer-events-none" />
+
+                    {/* Mobile-only Expand Badge */}
+                    <div className="absolute bottom-2 right-2 md:hidden p-1.5 rounded-full bg-[#0A0A0A]/85 border border-white/10 text-[#D4AF37]">
+                      <Eye size={10} />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
         </div>
