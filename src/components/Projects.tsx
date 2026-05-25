@@ -158,20 +158,6 @@ export default function Projects() {
                   className="w-full flex flex-col group cursor-none"
                   data-cursor="play"
                 >
-                  {/* Meta details */}
-                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mb-2">
-                    <span>0{idx + 1}</span>
-                    <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
-                    <span className="text-white/60">{project.year}</span>
-                  </div>
-
-                  <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight mb-1 truncate" title={project.title}>
-                    {project.title}
-                  </h3>
-                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase mb-3 truncate" title={project.category}>
-                    {project.category}
-                  </p>
-
                   {/* 16:9 Video Player Container (Shrinks responsively) */}
                   <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/[0.04] bg-[#141414] shadow-lg group">
                     <video
@@ -192,13 +178,30 @@ export default function Projects() {
 
                     {/* Volume Control Overlay (Appears on hover) */}
                     <button
-                      onClick={() => toggleMute(project.id)}
+                      onClick={(e) => {
+                        e.stopPropagation(); // prevent opening lightbox
+                        toggleMute(project.id);
+                      }}
                       className="absolute bottom-2 right-2 p-1.5 rounded-full bg-black/75 border border-white/10 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
                       title={mutedVideos[project.id] ? "Unmute" : "Mute"}
                     >
                       {mutedVideos[project.id] ? <VolumeX size={10} /> : <Volume2 size={10} />}
                     </button>
                   </div>
+
+                  {/* Meta details below */}
+                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mt-4 mb-1">
+                    <span>0{idx + 1}</span>
+                    <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
+                    <span className="text-white/60">{project.year}</span>
+                  </div>
+
+                  <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight mb-0.5 group-hover:text-[#D4AF37] transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase">
+                    {project.category}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -224,27 +227,6 @@ export default function Projects() {
                   className="w-full flex flex-col group cursor-none"
                   data-cursor="view"
                 >
-                  {/* Meta details */}
-                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mb-2">
-                    <span>0{idx + 1}</span>
-                    <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
-                    <span className="text-white/60">{project.year}</span>
-                  </div>
-
-                  <div className="flex justify-between items-end gap-2 mb-1">
-                    <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300 truncate" title={project.title}>
-                      {project.title}
-                    </h3>
-                    
-                    <div className="hidden md:flex items-center gap-1 text-[#D4AF37] opacity-40 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-500 flex-shrink-0">
-                      <Eye size={11} />
-                    </div>
-                  </div>
-                  
-                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase mb-3 truncate" title={project.category}>
-                    {project.category}
-                  </p>
-
                   {/* 16:9 Image Container (Click opens lightbox) */}
                   <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/[0.04] bg-[#141414] shadow-lg cursor-zoom-in">
                     <Image
@@ -269,6 +251,27 @@ export default function Projects() {
                       <Eye size={10} />
                     </div>
                   </div>
+
+                  {/* Meta details below */}
+                  <div className="flex items-center gap-2 text-[10px] font-sans font-medium tracking-[0.2em] text-[#D4AF37] uppercase mt-4 mb-1">
+                    <span>0{idx + 1}</span>
+                    <span className="w-1.5 h-[1px] bg-[#D4AF37]/30" />
+                    <span className="text-white/60">{project.year}</span>
+                  </div>
+
+                  <div className="flex justify-between items-end gap-2 mb-0.5">
+                    <h3 className="text-white text-sm md:text-base font-display font-light tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    
+                    <div className="hidden md:flex items-center gap-1 text-[#D4AF37] opacity-40 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-500 flex-shrink-0">
+                      <Eye size={11} />
+                    </div>
+                  </div>
+                  
+                  <p className="text-[9px] font-sans tracking-[0.08em] text-[#999999] uppercase">
+                    {project.category}
+                  </p>
                 </motion.div>
               ))}
             </div>
