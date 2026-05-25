@@ -247,6 +247,7 @@ export default function Projects() {
             >
               <video
                 src={hoveredProject.videoUrl}
+                poster={hoveredProject.coverImage}
                 className="w-full h-full object-cover"
                 style={{ 
                   transform: "translateZ(0)",
@@ -315,6 +316,7 @@ export default function Projects() {
                 <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#141414] border border-white/[0.04]">
                   <video
                     src={selectedProject.videoUrl}
+                    poster={selectedProject.coverImage}
                     className="w-full h-full object-cover"
                     style={{ transform: "translateZ(0)" }}
                     autoPlay
