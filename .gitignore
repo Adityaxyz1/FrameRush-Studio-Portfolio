@@ -39,6 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Large cinematic assets (>100MB) excluded from GitHub size limit
-/public/portfolio/Videos/Wedding invitation.mp4
