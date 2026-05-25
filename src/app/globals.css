@@ -1,0 +1,199 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0A0A0A;
+  --color-foreground: #F2F2F2;
+  --color-gold: #D4AF37;
+  --color-dark-charcoal: #141414;
+  --color-soft-silver: #B8B8B8;
+  --color-off-white: #F2F2F2;
+  
+  --font-display: "Clash Display", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+}
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F2F2F2;
+  --gold: #D4AF37;
+  --dark-charcoal: #141414;
+  --soft-silver: #B8B8B8;
+  --off-white: #F2F2F2;
+}
+
+/* Base style resets and scroll behavior */
+html {
+  scroll-behavior: initial; /* Managed by Lenis */
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Satoshi", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Text Selection */
+::selection {
+  background: #D4AF37;
+  color: #0A0A0A;
+}
+
+/* ─── Global 60fps video GPU acceleration ──────────────────────────────────
+   Forces all video elements onto their own GPU compositor layer.
+   - transform: translateZ(0) → dedicated GPU raster layer
+   - will-change: transform   → pre-promotes the layer before first frame
+   - NO CSS filter rules should ever be applied on top of <video>
+   ─────────────────────────────────────────────────────────────────────── */
+video {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Responsive typography scaling using clamp() */
+h1 {
+  font-family: "Clash Display", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw + 0.8rem, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-family: "Clash Display", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw + 0.5rem, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: "Clash Display", sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2vw + 0.3rem, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+p {
+  font-family: "Satoshi", sans-serif;
+  font-size: clamp(0.9rem, 0.3vw + 0.75rem, 1.15rem);
+  line-height: 1.6;
+  color: #B8B8B8;
+}
+
+/* Cinematic Utilities */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F2F2F2 0%, #D4AF37 50%, #8A6F27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold-brushed {
+  background: linear-gradient(90deg, #D4AF37 0%, #F9E7B9 25%, #D4AF37 50%, #AA820A 75%, #D4AF37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.08), inset 0 0 15px rgba(212, 175, 55, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.gold-hover-glow {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-hover-glow:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* Glassmorphism — solid semi-transparent bg (no backdrop-filter blur)
+   backdrop-filter forces a blur compositor layer that re-renders every frame
+   when stacked above video/canvas elements, killing GPU performance */
+.glass-panel {
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.glass-gold-panel {
+  background: rgba(10, 10, 10, 0.82);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+/* Noise overlay (GPU-optimized static tile) */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Hardware-accelerated CSS animations for instant critical above-the-fold paint (LCP reduction) */
+@keyframes reveal-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-reveal-up {
+  opacity: 0;
+  animation: reveal-up 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+.animate-reveal-up-delayed {
+  opacity: 0;
+  animation: reveal-up 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.animate-reveal-up-more-delayed {
+  opacity: 0;
+  animation: reveal-up 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.5s;
+}
